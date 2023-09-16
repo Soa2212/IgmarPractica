@@ -27,15 +27,15 @@ class Monitores_Controller extends Controller
             ], 422);
         }
 
-        $monitores = new monitores();
-        $monitores->Tasa_de_refresco = $request->Tasa_de_refresco;
-        $monitores->Pulgadas = $request->Pulgadas;
-        $monitores->Precio = $request->Precio;
-        $monitores->Stock = $request->Stock;
-        $monitores->save();
+        $monitor = new monitores();
+        $monitor->Tasa_de_refresco = $request->Tasa_de_refresco;
+        $monitor->Pulgadas = $request->Pulgadas;
+        $monitor->Precio = $request->Precio;
+        $monitor->Stock = $request->Stock;
+        $monitor->save();
 
 
-        return response()->json([["msg" => "Hola tu monitor sido registrado con exito", "data" => $monitores, "estado" => 201]]);
+        return response()->json([["msg" => "Hola tu monitor sido registrado con exito", "data" => $monitor, "estado" => 201]]);
     }
 
     public function index()
@@ -48,9 +48,9 @@ class Monitores_Controller extends Controller
 
     public function update(Request $request, int $id)
     {
-        $monitores = monitores::find($id);
+        $monitor = monitores::find($id);
 
-        if ($monitores) {
+        if ($monitor) {
 
             $validate = Validator::make($request->all(), [
                 "Tasa_de_refresco" => "required|min:2|max:20",
@@ -66,13 +66,13 @@ class Monitores_Controller extends Controller
                 ], 422);
             }
 
-            $monitores->Tasa_de_refresco = $request->Tasa_de_refresco;
-            $monitores->Pulgadas = $request->Pulgadas;
-            $monitores->Precio = $request->Precio;
-            $monitores->Stock = $request->Stock;
-            $monitores->save();
+            $monitor->Tasa_de_refresco = $request->Tasa_de_refresco;
+            $monitor->Pulgadas = $request->Pulgadas;
+            $monitor->Precio = $request->Precio;
+            $monitor->Stock = $request->Stock;
+            $monitor->save();
 
-            return response()->json([["msg" => "Hola tu monitor sido registrado con exito", "data" => $monitores, "estado" => 201]]);
+            return response()->json([["msg" => "Hola tu monitor sido actualizado con exito", "data" => $monitor, "estado" => 201]]);
 
 
         }
