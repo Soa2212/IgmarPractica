@@ -24,4 +24,6 @@ Route::prefix('v1')->group(function () {
     Route::get('/Monitores', [Monitores_Controller::class, 'index']);
     Route::put('/Monitores/edit/{id}', [Monitores_Controller::class, 'update'])
         ->where(['id', '[0-9]+']);
+   Route::delete('/Monitores/delete/{id}',[Monitores_Controller::class, 'destroy'])
+        ->where(['id', '[0-9]+']);     
 });
