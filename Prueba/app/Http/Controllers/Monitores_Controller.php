@@ -14,8 +14,8 @@ class Monitores_Controller extends Controller
     {
 
         $validate = Validator::make($request->all(), [
-            "Tasa_de_refresco" => "required|min:2|max:20",
-            "Pulgadas" => "required|min:2|max:20",
+            "Tasa_de_refresco" => "required|min:2|max:4",
+            "Pulgadas" => "required|min:2|max:3",
             "Precio" => "required|min:2|max:20",
             "Stock" => "required|min:2|max:20"
         ]);
