@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\ApiController;
 use App\Http\Controllers\api\v2\ApiController as ApiV2Controller;
 use App\Http\Controllers\Monitores_Controller;
+use App\Http\Controllers\Libros_Controller;
 
 /* 
 
@@ -28,6 +29,13 @@ Route::prefix('v1')->group(function () {
     Route::get('/Monitores', [Monitores_Controller::class, 'index']);
     Route::put('/Monitores/edit/{id}', [Monitores_Controller::class, 'update'])
         ->where(['id', '[0-9]+']);
-   Route::delete('/Monitores/delete/{id}',[Monitores_Controller::class, 'destroy'])
-        ->where(['id', '[0-9]+']);     
+    Route::delete('/Monitores/delete/{id}',[Monitores_Controller::class, 'destroy'])
+        ->where(['id', '[0-9]+']); 
+        
+    Route::post('/Libros', [Libros_Controller::class, 'store']);
+    Route::get('/Libros', [Libros_Controller::class, 'index']);
+    Route::put('/Libros/edit/{id}', [Libros_Controller::class, 'update'])
+        ->where(['id', '[0-9]+']);
+    Route::delete('/Libros/delete/{id}',[Libros_Controller::class, 'destroy'])
+        ->where(['id', '[0-9]+']);    
 });
