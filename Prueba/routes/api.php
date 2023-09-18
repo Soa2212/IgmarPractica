@@ -6,6 +6,8 @@ use App\Http\Controllers\api\ApiController;
 use App\Http\Controllers\api\v2\ApiController as ApiV2Controller;
 use App\Http\Controllers\Monitores_Controller;
 use App\Http\Controllers\Libros_Controller;
+use App\Http\Controllers\VendedorController ;
+
 
 /* 
 
@@ -38,4 +40,13 @@ Route::prefix('v1')->group(function () {
         ->where(['id', '[0-9]+']);
     Route::delete('/Libros/delete/{id}',[Libros_Controller::class, 'destroy'])
         ->where(['id', '[0-9]+']);    
+
+
+    Route::post('/vendedores',[VendedorController::class,'store']);
+    Route::get('/vendedores',[VendedorController::class,'index']);
+    Route::put('/vendedores/actualizar/{id}',[VendedorController::class,'update'])
+            ->where('id','[0-9]+');
+    Route::delete('/vendedores/delete/{id}',[Libros_Controller::class, 'destroy'])
+            ->where(['id', '[0-9]+']);    
+
 });
